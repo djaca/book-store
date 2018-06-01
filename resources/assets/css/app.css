@@ -1,0 +1,159 @@
+/**
+ * This injects Tailwind's base styles, which is a combination of
+ * Normalize.css and some additional base styles.
+ *
+ * You can see the styles here:
+ * https://github.com/tailwindcss/tailwindcss/blob/master/css/preflight.css
+ */
+@tailwind preflight;
+
+/**
+ * This injects any component classes registered by plugins.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/components";
+ */
+@tailwind components;
+
+/**
+ * Here you would add any of your custom component classes; stuff that you'd
+ * want loaded *before* the utilities so that the utilities could still
+ * override them.
+ *
+ * Example:
+ *
+ * .btn { ... }
+ * .form-input { ... }
+ *
+ * Or if using a preprocessor:
+ *
+ * @import "components/buttons";
+ * @import "components/forms";
+ */
+
+.btn {
+    @apply  .text-sm .font-bold .border .py-2 .px-4 .rounded
+}
+
+.btn-blue {
+    @apply .bg-blue .text-white .border-blue
+}
+
+.btn-blue:hover {
+    @apply .bg-blue-dark
+}
+
+.btn-red {
+    @apply .bg-red .text-white .border-red
+}
+
+.btn-red:hover {
+    @apply .bg-red-dark
+}
+
+.btn-light {
+    @apply .bg-transparent .text-grey-dark
+}
+
+.btn-light:hover {
+    @apply .text-grey-darkest .border-grey-darkest
+}
+
+.alert {
+    @apply .px-4 .py-3 .border .rounded .relative
+}
+
+.alert-info {
+    @apply .bg-blue-lightest .border-blue-light .text-blue-dark
+}
+
+.alert-success {
+    @apply .bg-green-lightest .border-green-light .text-green-dark
+}
+
+.alert-danger {
+    @apply .bg-red-lightest .border-red-light .text-red-dark
+}
+
+.alert-warning {
+    @apply .bg-orange-lightest .border-orange-light .text-orange-dark
+}
+
+.centered {
+    position: fixed;
+    top: 23px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Table */
+.my-table {
+    @apply .w-full .text-left .p-4 .pl-0
+}
+
+.my-table > thead > tr > th {
+    @apply .py-4 .px-4 .bg-teal-lightest .font-sans .font-medium .uppercase .text-sm .text-grey-darker .border-b .border-grey-light
+}
+
+.my-table > tbody > tr:hover {
+    @apply .bg-grey-lighter
+}
+
+.my-table > tbody > tr > td {
+    @apply .py-2 .px-4 .border-b .border-grey-light
+}
+
+ul {
+    @apply .list-reset
+}
+
+ul > li {
+    @apply .leading-normal
+}
+
+a {
+    @apply .no-underline
+}
+
+.dropdown-content {
+    min-width: 9rem;
+}
+
+.dropdown-content a {
+    @apply .text-black .text-sm .no-underline .block .py-2 .px-6
+}
+
+.dropdown-content a:hover {
+    @apply .bg-grey-lighter
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+/**
+ * This injects all of Tailwind's utility classes, generated based on your
+ * config file.
+ *
+ * If using `postcss-import`, use this import instead:
+ *
+ * @import "tailwindcss/utilities";
+ */
+@tailwind utilities;
+
+/**
+ * Here you would add any custom utilities you need that don't come out of the
+ * box with Tailwind.
+ *
+ * Example :
+ *
+ * .bg-pattern-graph-paper { ... }
+ * .skew-45 { ... }
+ *
+ * Or if using a preprocessor or `postcss-import`:
+ *
+ * @import "utilities/background-patterns";
+ * @import "utilities/skew-transforms";
+ */
