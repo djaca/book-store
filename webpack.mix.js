@@ -1,5 +1,10 @@
 const mix = require('laravel-mix');
 
+require('laravel-mix-tailwind');
+require('laravel-mix-purgecss');
+
+
+mix.browserSync({proxy: 'book-store.test', port: 8080, notify: false})
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -12,4 +17,10 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-   .sass('resources/sass/app.scss', 'public/css');
+   .postCss('resources/css/app.css', 'public/css')
+   .tailwind()
+   .purgeCss();
+
+if (mix.inProduction()) {
+  mix.version();
+}
