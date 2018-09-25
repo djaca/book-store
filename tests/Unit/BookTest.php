@@ -3,6 +3,7 @@
 namespace Tests\Unit;
 
 use App\Book;
+use App\Category;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -28,5 +29,13 @@ class BookTest extends TestCase
         $this->assertEquals('4.45', $book->price);
         $this->assertEquals('20', $book->in_stock);
         $this->assertEquals('book-img.jpg', $book->img);
+    }
+
+    /** @test */
+    public function it_belongs_to_category()
+    {
+        $book = factory(Book::class)->create();
+
+        $this->assertInstanceOf(Category::class, $book->category);
     }
 }
