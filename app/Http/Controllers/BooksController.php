@@ -41,4 +41,18 @@ class BooksController extends Controller
 
         return view('books.index', compact('books'));
     }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Book $book
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show(Book $book)
+    {
+        $book->load('category');
+
+        return view('books.show', compact('book'));
+    }
 }

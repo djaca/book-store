@@ -1,24 +1,16 @@
 <div class="bg-white mb-4 p-4 flex">
   <div class="lg:w-32 lg:h-48">
-    <a href="#">
+    <a href="{{ route('show', $book->isbn) }}">
       <img class="h-full w-full" src="{{ $book->img }}" alt="{{ $book->tile }}">
     </a>
   </div>
 
   <div class="w-full flex-1 mx-4">
     <div class="text-2xl mb-3">
-      <a href="#" class="no-underline hover:text-grey-dark text-grey-darker">{{ $book->title }}</a>
+      <a href="{{ route('show', $book) }}" class="no-underline hover:text-grey-dark text-grey-darker">{{ $book->title }}</a>
     </div>
     <div class="text-sm text-grey-darker mb-6">
-      By:
-      @foreach($book->authors as $author)
-        <a
-          href="{{ route('by.author', $author->slug) }}"
-          class="no-underline hover:text-grey-dark text-grey-darker"
-        >
-          {{ $author->name }}</a><span>{{ $loop->last ? '' : ', ' }}
-        </span>
-      @endforeach
+      By: @include('books._authors', ['authors' => $book->authors])
     </div>
     <div>{!! str_limit($book->description, 300) !!}</div>
   </div>
