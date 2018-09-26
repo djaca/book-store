@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Category;
 use Barryvdh\Debugbar\ServiceProvider as DebugbarServiceProvider;
 use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +17,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        View::composer('books.index', function ($view) {
+            $view->with('categories', Category::pluck('name', 'slug'));
+        });
     }
 
     /**

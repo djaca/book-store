@@ -6,7 +6,12 @@
             <ul class="list-reset leading-loose">
                 @foreach($categories as $slug => $name)
                     <li>
-                        <a href="#" class="text-blue hover:text-blue-darker no-underline">{{ $name }}</a>
+                        <a
+                          href="{{ route('by.category', $slug) }}"
+                          class="text-blue hover:text-blue-darker no-underline"
+                        >
+                          {{ $name }}
+                        </a>
                     </li>
                 @endforeach
             </ul>

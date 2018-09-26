@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     /**
+     * The relations to eager load on every query.
+     *
+     * @var array
+     */
+    protected $with = ['authors'];
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function category()

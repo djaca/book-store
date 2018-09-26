@@ -12,7 +12,12 @@
     <div class="text-sm text-grey-darker mb-6">
       By:
       @foreach($book->authors as $author)
-        <a href="#" class="no-underline hover:text-grey-dark text-grey-darker">{{ $author->name }}</a><span>{{ $loop->last ? '' : ', ' }}</span>
+        <a
+          href="{{ route('by.author', $author->slug) }}"
+          class="no-underline hover:text-grey-dark text-grey-darker"
+        >
+          {{ $author->name }}</a><span>{{ $loop->last ? '' : ', ' }}
+        </span>
       @endforeach
     </div>
     <div>{!! str_limit($book->description, 300) !!}</div>

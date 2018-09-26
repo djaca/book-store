@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'BooksController@index')->name('books');
+Route::get('category/{category}', 'BooksController@filterByCategory')->name('by.category');
+Route::get('author/{author}', 'BooksController@filterByAuthor')->name('by.author');
 
 Auth::routes();
 

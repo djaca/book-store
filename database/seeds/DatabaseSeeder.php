@@ -15,7 +15,9 @@ class DatabaseSeeder extends Seeder
         factory(\App\Book::class, 15)->create();
         $authors = factory(\App\Author::class, 20)->create();
 
-        \App\Book::all()->each(function ($item, $key) use ($authors) {
+        $books = \App\Book::all();
+
+        $books->each(function ($item, $key) use ($authors) {
             $item->authors()->attach($authors->random(rand(1, 3))->pluck('id')->toArray());
         });
     }
