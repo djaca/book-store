@@ -4,6 +4,7 @@ namespace Tests\Unit;
 
 use App\Book;
 use App\Category;
+use Illuminate\Database\Eloquent\Collection;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -37,5 +38,13 @@ class BookTest extends TestCase
         $book = factory(Book::class)->create();
 
         $this->assertInstanceOf(Category::class, $book->category);
+    }
+
+    /** @test */
+    public function it_belongs_to_many_authors()
+    {
+        $book = factory(Book::class)->create();
+
+        $this->assertInstanceOf(Collection::class, $book->authors);
     }
 }

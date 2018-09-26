@@ -9,7 +9,12 @@
     <div class="text-2xl mb-3">
       <a href="#" class="no-underline hover:text-grey-dark text-grey-darker">{{ $book->title }}</a>
     </div>
-    <div class="text-sm text-grey-darker mb-6">By: HDInsight Essentials, Pablo Solar Vilarino</div>
+    <div class="text-sm text-grey-darker mb-6">
+      By:
+      @foreach($book->authors as $author)
+        <a href="#" class="no-underline hover:text-grey-dark text-grey-darker">{{ $author->name }}</a><span>{{ $loop->last ? '' : ', ' }}</span>
+      @endforeach
+    </div>
     <div>{!! str_limit($book->description, 300) !!}</div>
   </div>
 
